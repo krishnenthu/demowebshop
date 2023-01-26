@@ -69,7 +69,7 @@ public class PageUtility {
         return tagName;
     }
 
-    public String getText(WebElement element) {
+    public String getElementText(WebElement element) {
         String text = element.getText();
         return text;
     }

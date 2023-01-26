@@ -1,14 +1,12 @@
 package com.demowebshop.utilities;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 
-public class RobotUtility {
+public class FileUploadUtility {
     public void FileUploadUsingRobotClass(WebDriver driver, String path) throws AWTException, InterruptedException {
         StringSelection s = new StringSelection(path);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(s, null);

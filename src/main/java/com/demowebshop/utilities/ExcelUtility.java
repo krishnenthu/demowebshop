@@ -1,11 +1,13 @@
 package com.demowebshop.utilities;
 
+import com.demowebshop.constants.Constants;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,10 +18,18 @@ public class ExcelUtility {
     public static XSSFSheet sh;
     public static FileInputStream f;
 
-    public  List<ArrayList<String>> excelDataReader(String excelPath, String sheetName) throws IOException {
+    public  static List<ArrayList<String>> excelDataReader(String sheetName){
         DataFormatter formatter = new DataFormatter();
-        f = new FileInputStream(System.getProperty("user.dir") + excelPath);
-        wb = new XSSFWorkbook(f);
+        try {
+            f = new FileInputStream(System.getProperty("user.dir") + Constants.EXCEL_PATH);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            wb = new XSSFWorkbook(f);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         sh = wb.getSheet(sheetName);
         List<ArrayList<String>> excelRows = new ArrayList<>();
         int rowCount = sh.getLastRowNum() - sh.getFirstRowNum();

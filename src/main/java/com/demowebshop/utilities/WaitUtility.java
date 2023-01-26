@@ -1,6 +1,5 @@
 package com.demowebshop.utilities;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +12,7 @@ import java.time.Duration;
 
 public class WaitUtility {
 
-    public static final long EXPLICIT_WAIT=20;
+    public static final long EXPLICIT_WAIT=20000;
     public  static  final long IMPLICIT_WAIT=20;
     public  static final long HARD_WAIT=20000;
     public  static  final long PAGE_LOAD_WAIT=20;
@@ -147,6 +146,17 @@ public class WaitUtility {
             throw new RuntimeException("Invalid Locator");
         }
     }
+    public  void waitForElementToBeVisible(WebDriver driver,WebElement element,Enum locatorType){
+        WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(EXPLICIT_WAIT));
+        if(locatorType.equals(LocatorType.Id)){
+            wait.until(ExpectedConditions.visibilityOf(element));
+        } else {
+            throw new RuntimeException("Invalid Locator");
+        }
+    }
+
+
+
     public  void waitForVisibilityOfAllElements(WebDriver driver,String target,Enum locatorType){
         WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(EXPLICIT_WAIT));
         if(locatorType.equals(LocatorType.Id)){
