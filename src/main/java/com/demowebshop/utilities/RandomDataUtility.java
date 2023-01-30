@@ -25,7 +25,7 @@ public class RandomDataUtility {
         phone = faker.phoneNumber();
         return phone;
     }
-    public  String getRandomEmail() {
+    public static String getRandomEmail() {
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
         StringBuilder sb = new StringBuilder();
         Random random = new Random();

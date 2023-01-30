@@ -24,6 +24,13 @@ public class HomePage extends TestHelperUtility {
     private final String _subscribeMessage="newsletter-result-block";
     @FindBy(id=_subscribeMessage) private WebElement subscribeMessage;
 
+    private final String _loginMenu ="//a[@class='ico-login']";
+    @FindBy(xpath = _loginMenu) private WebElement loginMenu;
+    private final String _registerMenu ="//a[text()='Register']";
+    @FindBy(xpath = _registerMenu) private WebElement registerMenu;
+
+
+
     /** User Action Methods **/
     public String getHomePageTitle(){
        String title= page.getPageTitle(driver);
@@ -42,6 +49,14 @@ public class HomePage extends TestHelperUtility {
         wait.waitForElementToBeVisible(driver,subscribeMessage, WaitUtility.LocatorType.Id);
         String message=page.getElementText(subscribeMessage);
         return message;
+    }
+    public LoginPage clickOnLoginMenu() {
+        page.clickOnElement(loginMenu);
+        return new LoginPage(driver);
+    }
+    public RegisterPage clickOnRegisterMenu() {
+        page.clickOnElement(registerMenu);
+        return new RegisterPage(driver);
     }
 
 }
