@@ -1,7 +1,10 @@
 package com.demowebshop.testscript;
 
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import com.demowebshop.automationcore.Base;
 import com.demowebshop.constants.ErrorMessage;
+import com.demowebshop.listeners.TestListener;
 import com.demowebshop.pages.HomePage;
 import com.demowebshop.pages.RegisterPage;
 import com.demowebshop.pages.UserAccountPage;
@@ -17,8 +20,10 @@ public class RegisterTest extends Base {
     HomePage home;
     RegisterPage register;
     UserAccountPage useraccountpage;
-    @Test(priority = 1,description = "TC001 Verify Register Page Title")
+    ThreadLocal<ExtentTest> extentTest = TestListener.getTestInstance();
+    @Test(priority = 1,description = "TC001 Verify Register Page Title",groups = {"Regression"})
     public void TC001_verifyUserRegistration() {
+        extentTest.get().assignCategory("Regression");
         List<ArrayList<String>> data = ExcelUtility.excelDataReader("RegisterPage");
         String gender=data.get(0).get(1);
         String fName=RandomDataUtility.getfName();
@@ -38,6 +43,6 @@ public class RegisterTest extends Base {
         useraccountpage = register.clickOnRegister();
         String actEmail=useraccountpage.getUserAccountEmailId();
         Assert.assertEquals(email,actEmail, ErrorMessage.INVALID_EMAIL_ID);
+        extentTest.get().log(Status.PASS,"User registration completed successfully");
     }
-
 }

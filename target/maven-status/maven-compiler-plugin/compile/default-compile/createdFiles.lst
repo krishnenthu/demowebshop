@@ -1,0 +1,16 @@
+com\demowebshop\pages\RegisterPage.class
+com\demowebshop\utilities\RandomDataUtility.class
+com\demowebshop\utilities\WaitUtility.class
+com\demowebshop\utilities\PageUtility.class
+com\demowebshop\constants\ErrorMessage.class
+com\demowebshop\pages\LoginPage.class
+com\demowebshop\constants\Constants.class
+com\demowebshop\pages\HomePage.class
+com\demowebshop\utilities\ExcelUtility.class
+com\demowebshop\pages\UserAccountPage.class
+com\demowebshop\utilities\TableUtility.class
+com\demowebshop\extentmanager\ExtentManager$1.class
+com\demowebshop\utilities\FileUploadUtility.class
+com\demowebshop\extentmanager\ExtentManager.class
+com\demowebshop\utilities\WaitUtility$LocatorType.class
+com\demowebshop\utilities\TestHelperUtility.class

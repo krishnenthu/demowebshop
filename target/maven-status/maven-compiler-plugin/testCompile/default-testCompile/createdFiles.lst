@@ -1,0 +1,8 @@
+com\demowebshop\dataprovider\Dataproviders.class
+com\demowebshop\testscript\HomeTest.class
+com\demowebshop\testscript\UserAccountTest.class
+com\demowebshop\testscript\LoginTest.class
+com\demowebshop\testscript\RegisterTest.class
+com\demowebshop\automationcore\Base.class
+com\demowebshop\automationcore\DriverFactory.class
+com\demowebshop\listeners\TestListener.class

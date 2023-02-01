@@ -1,13 +1,16 @@
 package com.demowebshop.automationcore;
 
 import com.demowebshop.constants.Constants;
+import com.demowebshop.extentmanager.ExtentManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 
 import java.io.File;
@@ -34,14 +37,15 @@ public class Base {
         }
     }
 
-    @BeforeMethod
-    public void setUP(){
+    @BeforeMethod(alwaysRun = true)
+    @Parameters({"browser"})
+    public void setUP(String browserName){
         String url=prop.getProperty("url");
-        String browser=prop.getProperty("browser");
-        driver = DriverFactory.testInitializa(browser);
+       // String browser=prop.getProperty("browser");
+        driver = DriverFactory.testInitializa(browserName);
         driver.get(url);
     }
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown(ITestResult result) throws IOException {
         if (result.getStatus() == ITestResult.FAILURE) {
             TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
@@ -49,5 +53,9 @@ public class Base {
             FileUtils.copyFile(screenshot, new File("./Screenshots/" + result.getName() + ".png"));
         }
         driver.close();
+    }
+    @BeforeSuite
+    public void setExtent(final ITestContext testContext){
+        ExtentManager.createInstance().createTest(testContext.getName(), "TEST FAILED");
     }
 }
