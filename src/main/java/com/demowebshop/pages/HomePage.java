@@ -45,8 +45,8 @@ public class HomePage extends TestHelperUtility {
     }
     public String getSubscribeMessage(){
        //wait.waitForElementToBeVisible(driver,_subscribeMessage, WaitUtility.LocatorType.Id);
-      //  wait.setHardWait();
-        wait.waitForElementToBeVisible(driver,subscribeMessage, WaitUtility.LocatorType.Id);
+       wait.setHardWait();
+      //wait.waitForElementToBeVisible(driver,subscribeMessage, WaitUtility.LocatorType.Id);
         String message=page.getElementText(subscribeMessage);
         return message;
     }

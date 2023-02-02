@@ -26,7 +26,7 @@ public class HomeTest extends Base {
         String actualHomePageTitle=home.getHomePageTitle();
         extentTest.get().log(Status.PASS,"Home page title received");
         Assert.assertEquals(actualHomePageTitle,expectedHomePageTitle, ErrorMessage.TITLE_FAILURE_MESSAGE);
-        extentTest.get().log(Status.PASS,"Expected home page title match with actual home page title");
+        extentTest.get().log(Status.PASS,"Expected home page title matches with actual home page title");
     }
     @Test(priority = 1, description = "TC002 verify subscribe email message", groups = {"Sanity"})
     public  void TC_002_verifySubscribeEmailMessage(){
@@ -39,6 +39,6 @@ public class HomeTest extends Base {
         String actualSubscribeMessage= home.getSubscribeMessage();
         extentTest.get().log(Status.PASS,"Subscribe email message received");
         Assert.assertEquals(actualSubscribeMessage,expectedSubscribeMessage,ErrorMessage.SUBSCRIBE_FAILURE_MESSAGE);
-        extentTest.get().log(Status.PASS,"Expected Subscribe email message match with Subscribe email message");
+        extentTest.get().log(Status.PASS,"Expected Subscribe email message matches with Subscribe email message");
     }
 }
